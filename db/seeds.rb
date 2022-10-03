@@ -21,31 +21,31 @@ Airport.create(code: "JFK", location: "New York JFK")
 Flight.create([
   {
     origin_airport_id: Airport.find_by(code: "GDN").id,
-    destinantion_airport_id: Airport.find_by(code: "LHR").id,
+    destination_airport_id: Airport.find_by(code: "LHR").id,
     start_datetime: DateTime.now + 60.days,
     flight_duration: "2,5"
   },
   {
     origin_airport_id: Airport.find_by(code: "WRO").id,
-    destinantion_airport_id: Airport.find_by(code: "GDN").id,
+    destination_airport_id: Airport.find_by(code: "GDN").id,
     start_datetime: DateTime.now + 70.days,
     flight_duration: "1"
   },
   {
     origin_airport_id: Airport.find_by(code: "POZ").id,
-    destinantion_airport_id: Airport.find_by(code: "KRK").id,
+    destination_airport_id: Airport.find_by(code: "KRK").id,
     start_datetime: DateTime.now + 80.days,
     flight_duration: "1"
   },
   {
     origin_airport_id: Airport.find_by(code: "KRK").id,
-    destinantion_airport_id: Airport.find_by(code: "JFK").id,
+    destination_airport_id: Airport.find_by(code: "JFK").id,
     start_datetime: DateTime.now + 100.days,
     flight_duration: "11,5"
   },
   {
     origin_airport_id: Airport.find_by(code: "JFK").id,
-    destinantion_airport_id: Airport.find_by(code: "GDN").id,
+    destination_airport_id: Airport.find_by(code: "GDN").id,
     start_datetime: DateTime.now + 150.days,
     flight_duration: "11,5"
   },
