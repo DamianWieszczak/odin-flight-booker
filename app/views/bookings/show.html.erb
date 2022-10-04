@@ -1,4 +1,14 @@
-<hr>
-flight id: <%= @booking.flight.id %>
-<hr>
-<%= @booking.passengers.each { |o| } %>
+<h1>Have a good trip!</h1>
+
+<%= render "flights/flight", flight: @booking.flight %>
+
+<h2>Passengers:</h2>
+<ul class="passengers-info list-group m-2 w-50">
+  <% @booking.passengers.each do |passenger| %>
+    <li class="list-group-item">
+      <p class="text-muted"><%= passenger.email %></p>
+      <h4><%= passenger.name %></h4>
+    </li>
+  <% end %>
+</ul>
+<%= link_to "Arrange a new trip", root_path, class: "btn btn-success" %>

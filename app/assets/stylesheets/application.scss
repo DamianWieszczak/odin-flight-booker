@@ -15,3 +15,52 @@
  */
 
  @import "bootstrap";
+ @import "font-awesome";
+
+ body{
+  background-color: #3AB4F2;
+}
+
+h1 {
+  font-size: 4rem;
+  text-align: center;
+  color: black;
+  text-shadow: 2px 2px 2px #c22a27; 
+  margin-bottom: 10%;
+}
+
+h2 {
+  font-size: 3rem;
+  text-align: center;
+  color: black;
+  text-shadow: 2px 2px 2px #c22a27; 
+  margin-bottom: 10%;
+}
+
+h3 {
+  font-size: 2rem;
+  color: black;
+  text-shadow: 2px 2px 2px #c22a27; 
+}
+
+.flight-info .list-group-item, 
+.passengers-info .list-group-item{
+    background-color: #F2DF3A;
+}
+
+.main-view {
+  background-color: #F6F6F6;
+  border-radius: 2%;
+  padding: 5%;
+  margin: 5%;
+}
+
+.no-flights {
+  background-color: #F15412;
+  border-radius: 2%;
+  padding: 2%;
+  margin: 2%;
+  color: white;
+  text-align: center;
+  font-size: 2rem;
+}

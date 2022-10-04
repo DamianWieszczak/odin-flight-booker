@@ -1,21 +1,57 @@
-<h1>Flights</h1>
+<h1>Flight-Booker</h1>
 
-<%= form_with url: "/flights", method: :get do |f| %>
-  <%= f.select(:departure_airport, @airport_options) %>
-  <%= f.select(:arrival_airport, @airport_options) %>
-  <%= f.select(:num_of_passengers, [1,2,3,4]) %>
-  <%= f.select(:flight_date, @flights_dates) %>
-  <%= f.submit "Search for flight", class: "btn btn-primary m-3" %>
-<% end %>
 
-<h2>Flights found:</h2>
-<ul>
-  <% @flights.each do |f| %>
-    <li>
-      <p> <%= f.start_datetime %> </p>
-      <p> <%= f.flight_duration %> hours </p>
-      <p> From: <%= f.departure_airport.location %>, <%= f.departure_airport.code %></p>
-      <p> To: <%= f.arrival_airport.location %>, <%= f.arrival_airport.code %></p>
-    </li>
+<div class="search-form">
+    <%= form_with url: "/flights", method: :get do |f| %>
+        <div class="form-group">
+            <%= f.select(:departure_airport, @airport_options)%>
+            <%= icon('fa-solid', 'plane')%>
+            <%= f.select(:arrival_airport, @airport_options) %>
+            <%= icon('fa-solid', 'person')%>
+            <%= f.select(:num_of_passengers, [1,2,3,4]) %>
+            <%= icon('fa-solid', 'calendar')%>
+            <%= f.select(:flight_date, @flights_dates) %>
+        </div>
+        <div class="form-actions text-center">
+            <%= f.button "Search for flight", class:"btn btn-primary m-5", type:"submit" %>
+        </div>
+    <% end %>
+</div>
+
+<% if params[:departure_airport].present? %>
+  <% unless @flights.empty? %>
+    <div class="flights-found">
+        <h2 class="text-center">Flights found:</h2>
+        
+        <%= form_with url: "/bookings/new", method: :get do |form| %>
+            <%= form.hidden_field :num_of_passengers, value: params[:num_of_passengers] %>
+            <% @flights.each do |flight| %>
+                <div class="flight d-flex flex-row">
+                    <%= form.radio_button "flight", flight.id %>
+                    
+                    <ul class="flight-info list-group text-center m-2">
+                      <li class="list-group-item">
+                          Departure Airport: <strong><%= flight.departure_airport.location %>, <%= flight.departure_airport.code %></strong> - 
+                          Arrival Airport: <strong><%= flight.arrival_airport.location %>, <%= flight.arrival_airport.code %></strong>
+                      </li>
+                      <li class="list-group-item">
+                          Date & Time: <%= flight.start_datetime %>
+                      </li>
+                      <li class="list-group-item">
+                          flight time: <%= flight.flight_duration %> hours
+                      </li>
+                    </ul>
+
+                </div>
+            <% end %>
+            <div class="form-actions text-center">
+                <%= form.button "Continue", class:"btn btn-primary m-2", type:"submit"%>
+            </div>
+        <% end %>
+    </div>
+  <% else %>
+      <div class="no-flights">
+        <p>No flights found.</p>
+      </div>
   <% end %>
-</ul>
+<% end %>
