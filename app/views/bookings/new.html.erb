@@ -1,0 +1,13 @@
+<%= params %>
+<%= @booking.passengers.each { |s| s } %>
+
+  <%= form_with model: @booking do |form| %>
+    <%= form.hidden_field :flight_id, value: params[:flight] %>
+    <h2>passenger detail:</h2>
+    <%= form.fields_for :passengers do |passengers_form| %>
+      <%= passengers_form.text_field :email, value: "email" %>
+      <%= passengers_form.text_field :name, value: "name" %>
+    <% end %>
+    <%= form.submit %>
+<% end %>
+
