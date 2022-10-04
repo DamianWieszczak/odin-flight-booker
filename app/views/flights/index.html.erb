@@ -1,0 +1,21 @@
+<h1>Flights</h1>
+
+<%= form_with url: "/flights", method: :get do |f| %>
+  <%= f.select(:departure_airport, @airport_options) %>
+  <%= f.select(:arrival_airport, @airport_options) %>
+  <%= f.select(:num_of_passengers, [1,2,3,4]) %>
+  <%= f.select(:flight_date, @flights_dates) %>
+  <%= f.submit "Search for flight", class: "btn btn-primary m-3" %>
+<% end %>
+
+<h2>Flights found:</h2>
+<ul>
+  <% @flights.each do |f| %>
+    <li>
+      <p> <%= f.start_datetime %> </p>
+      <p> <%= f.flight_duration %> hours </p>
+      <p> From: <%= f.departure_airport.location %>, <%= f.departure_airport.code %></p>
+      <p> To: <%= f.arrival_airport.location %>, <%= f.arrival_airport.code %></p>
+    </li>
+  <% end %>
+</ul>
