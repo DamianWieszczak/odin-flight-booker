@@ -53,7 +53,7 @@ gem "sassc-rails"
 gem "font-awesome-sass", "~> 6.2.0"
 
 group :production do
-  gem 'pg'
+  gem "pg"
 end
 
 group :development, :test do
