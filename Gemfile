@@ -52,6 +52,8 @@ gem "sassc-rails"
 
 gem "font-awesome-sass", "~> 6.2.0"
 
+gem "letter_opener", group: :development
+
 group :production do
   gem "pg"
 end
